@@ -1,5 +1,5 @@
 module.exports = app => {
-    const { ldap } = app.controllers.ActiveDirectory;
+    const ldap  = app.controllers.ActiveDirectory;
     const controller = {};
 
     controller.buscarGrupo = (req, res) => {

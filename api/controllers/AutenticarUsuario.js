@@ -1,7 +1,6 @@
 module.exports = app => {
     const ldap = app.controllers.ActiveDirectory;
     const controller = {};
-    console.log(ldap);
     controller.autenticarUsuario = (req, res) => {
         const { username, password } = req.body;
 
