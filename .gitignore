@@ -1,0 +1,3 @@
+default.json
+*.env
+node_modules/
