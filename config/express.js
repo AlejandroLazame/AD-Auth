@@ -2,9 +2,9 @@ const express = require('express');
 const config = require('config');
 const consign = require('consign');
 
-module.exports = app => {
+module.exports = () => {
     const app = express();
-    app.set('port', process.env.PORT ?? config.get('server.port'));
+    app.set('port', process.env.PORT ?? config.get('SERVER.PORT'));
     app.use(express.json());
 
     consign({cwd: 'api', locale: 'pt-br', verbose: false, extensions: ['.js','.json']})
