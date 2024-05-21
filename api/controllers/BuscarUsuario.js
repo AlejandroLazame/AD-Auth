@@ -3,16 +3,16 @@ module.exports = app => {
     const controller = {};
 
     controller.buscarUsuario = (req, res) => {
-        const { usuario } = req.params;
+        const query = `cn=*${req.params}*`;
 
-        ldap.findUser(usuario, (err, usuario)=>{
-            console.log(usuario);
-            if(err) {
+        console.log(ldap);
+        ldap.find(query, (err, results)=> {
+            if(err || ! results.users){
                 console.error(err);
                 res.status(500).json(err);
             }
 
-            res.status(200).json(usuario);
+            res.status(200).json(results.users);
         })
     }
 
