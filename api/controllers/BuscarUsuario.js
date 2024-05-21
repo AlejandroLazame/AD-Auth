@@ -7,9 +7,14 @@ module.exports = app => {
 
         console.log(ldap);
         ldap.find(query, (err, results)=> {
-            if(err || ! results.users){
+            if(err){
                 console.error(err);
                 res.status(500).json(err);
+            }
+
+            if(results.hasOwnProperty('users') === false){
+                console.log(results);
+                res.status(404).json('❓Usuario nao encontrado.');
             }
 
             res.status(200).json(results.users);
